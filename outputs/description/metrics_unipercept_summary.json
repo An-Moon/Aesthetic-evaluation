@@ -1,0 +1,25 @@
+{
+  "pred_file": "/home/Hu_xuanwei/aesthetic_eval_framework/outputs/unipercept_description_20260404_190930/predictions.jsonl",
+  "enabled": [
+    "bleu",
+    "rouge",
+    "meteor",
+    "bertscore",
+    "sbert_cos",
+    "clipscore"
+  ],
+  "metrics": {
+    "N": 6000.0,
+    "BLEU": 5.1185792144135664,
+    "ROUGE-1": 0.4303473665869807,
+    "ROUGE-2": 0.10573963909074628,
+    "ROUGE-L": 0.23543008928193618,
+    "METEOR": 0.20047941377722237,
+    "BERT-P": 0.6946631595045328,
+    "BERT-R": 0.6926274283428987,
+    "BERT-F1": 0.6934718110760053,
+    "SBERT-Cos": 0.8234022435496251,
+    "CLIPScore": 0.3178423211425543,
+    "CLIP-N": 6000.0
+  }
+}

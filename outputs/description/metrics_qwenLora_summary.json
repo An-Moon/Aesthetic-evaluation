@@ -1,0 +1,25 @@
+{
+  "pred_file": "/home/Hu_xuanwei/aesthetic_eval_framework/outputs/qwen3_vl_lora_ft_description_20260406_094730/predictions.jsonl",
+  "enabled": [
+    "bleu",
+    "rouge",
+    "meteor",
+    "bertscore",
+    "sbert_cos",
+    "clipscore"
+  ],
+  "metrics": {
+    "N": 6000.0,
+    "BLEU": 12.227044547699094,
+    "ROUGE-1": 0.5261720420827296,
+    "ROUGE-2": 0.1904516396842766,
+    "ROUGE-L": 0.29654441505411977,
+    "METEOR": 0.29592128430579323,
+    "BERT-P": 0.7213587547739346,
+    "BERT-R": 0.7220358441571395,
+    "BERT-F1": 0.721539719392856,
+    "SBERT-Cos": 0.7870928685516119,
+    "CLIPScore": 0.2846732222760717,
+    "CLIP-N": 6000.0
+  }
+}

@@ -1,0 +1,21 @@
+model_name: artquant
+adapter: artquant
+model_path: /home/Hu_xuanwei/model/ArtQuant/APDD
+model_base: /home/Hu_xuanwei/model/mplug-owl2-llama2-7b
+preprocessor_path: /home/Hu_xuanwei/model/mplug-owl2-llama2-7b
+artquant_repo_root: /home/Hu_xuanwei/ArtQuant
+device: cuda:0
+load_8bit: false
+load_4bit: false
+level_names:
+  - excellent
+  - good
+  - fair
+  - poor
+  - bad
+infer_mode: generate
+conv_mode: mplug_owl2
+score_prompt: How would you rate the quality of this painting?
+score_suffix: The quality of the painting is
+env_name: artquant
+notes: ArtQuant uses mPLUG-Owl2 base plus APDD LoRA/non-lora trainables.

@@ -1,0 +1,8 @@
+model_name: qsit
+adapter: qsit
+model_path: /home/Hu_xuanwei/model/q-sit
+device: cuda:0
+torch_dtype: float16
+infer_mode: generate
+env_name: artquant
+notes: Q-SiT generate-mode smoke in artquant env.

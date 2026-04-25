@@ -1,0 +1,25 @@
+{
+  "pred_file": "/home/Hu_xuanwei/aesthetic_eval_framework/outputs/artimuse_description_20260403_202952/predictions.jsonl",
+  "enabled": [
+    "bleu",
+    "rouge",
+    "meteor",
+    "bertscore",
+    "sbert_cos",
+    "clipscore"
+  ],
+  "metrics": {
+    "N": 6000.0,
+    "BLEU": 7.9774060083893925,
+    "ROUGE-1": 0.4928320278225537,
+    "ROUGE-2": 0.1543693833446904,
+    "ROUGE-L": 0.27136831439743675,
+    "METEOR": 0.23947665921255157,
+    "BERT-P": 0.725341809267799,
+    "BERT-R": 0.7105455420513948,
+    "BERT-F1": 0.7176883719215791,
+    "SBERT-Cos": 0.8258970475842555,
+    "CLIPScore": 0.31247320509453613,
+    "CLIP-N": 6000.0
+  }
+}

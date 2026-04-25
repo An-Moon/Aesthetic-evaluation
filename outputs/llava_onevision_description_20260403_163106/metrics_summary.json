@@ -1,0 +1,28 @@
+{
+  "pred_file": "/home/Hu_xuanwei/aesthetic_eval_framework/outputs/llava_onevision_description_20260403_163106/predictions.jsonl",
+  "enabled": [
+    "bleu",
+    "rouge",
+    "meteor",
+    "bertscore",
+    "sbert_cos",
+    "clipscore"
+  ],
+  "metrics": {
+    "N": 6000.0,
+    "BLEU": 10.324339369078984,
+    "ROUGE-1": 0.51546478773208,
+    "ROUGE-2": 0.17070861635732087,
+    "ROUGE-L": 0.28494899424192505,
+    "METEOR": 0.27541654236789526,
+    "BERT-P": 0.0,
+    "BERT-R": 0.0,
+    "BERT-F1": 0.0,
+    "BERT-Error": "\nAutoModel requires the PyTorch library but it was not found in your environment. Check out the instructions on the\ninstallation page: https://pytorch.org/get-started/locally/ and follow the ones that match your environment.\nPlease note that you may need to restart your runtime after installation.\n",
+    "SBERT-Cos": 0.0,
+    "SBERT-Error": "name 'nn' is not defined",
+    "CLIPScore": 0.0,
+    "CLIP-N": 0.0,
+    "CLIP-Error": "\nCLIPModel requires the PyTorch library but it was not found in your environment. Check out the instructions on the\ninstallation page: https://pytorch.org/get-started/locally/ and follow the ones that match your environment.\nPlease note that you may need to restart your runtime after installation.\n"
+  }
+}

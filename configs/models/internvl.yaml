@@ -1,0 +1,7 @@
+model_name: internvl
+adapter: internvl
+model_path: /home/Hu_xuanwei/InternVL3_5-8B
+torch_dtype: float16
+device_map: '{"": 0}'
+trust_remote_code: true
+env_name: qwen_vl

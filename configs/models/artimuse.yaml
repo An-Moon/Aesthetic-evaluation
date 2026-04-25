@@ -1,0 +1,8 @@
+model_name: artimuse
+adapter: internvl
+model_path: /home/Hu_xuanwei/model/ArtiMuse
+torch_dtype: bfloat16
+device_map: '{"": 0}'
+trust_remote_code: true
+env_name: artimuse
+notes: ArtiMuse is InternVL-family, use InternVL adapter first.

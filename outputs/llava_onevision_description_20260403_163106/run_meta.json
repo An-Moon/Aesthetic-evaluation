@@ -1,0 +1,80 @@
+{
+  "model_name": "llava_onevision",
+  "task": "description",
+  "sample_count": 6000,
+  "elapsed_seconds": 3987.885666582966,
+  "dataset_meta": {
+    "dataset_json": "/data/students/Hu_xuanwei/Aesthetic/test-set/mixed_eval_6000.json",
+    "dataset_sha256": "b5ea132c67006a7f091e75e7bc78396f2df0b43921b373d07e53081e5bc83231",
+    "raw_count": "6000",
+    "kept_count": "6000",
+    "missing_image_count": "0"
+  },
+  "base_config": {
+    "experiment_name": "aesthetic_description",
+    "seed": 42,
+    "task": "description",
+    "data": {
+      "dataset_json": "/home/Hu_xuanwei/data/Aesthetic/test-set/mixed_eval_6000.json",
+      "image_root": "/home/Hu_xuanwei/data/Aesthetic/test-set/mixed_eval_6000_images",
+      "image_alt_root": null,
+      "sample_limit": null
+    },
+    "preprocess": {
+      "image_size": 448,
+      "interpolation": "bicubic"
+    },
+    "generation": {
+      "max_new_tokens": 256,
+      "do_sample": false,
+      "temperature": null
+    },
+    "dataloader": {
+      "batch_size": 16,
+      "max_workers": 32,
+      "prefetch_factor": 16,
+      "pin_memory": true
+    },
+    "runtime": {
+      "device": "cuda",
+      "allow_tf32": true,
+      "cudnn_benchmark": true,
+      "log_batch_time": true,
+      "output_root": "/home/Hu_xuanwei/aesthetic_eval_framework/outputs"
+    },
+    "prompt": {
+      "template": "{question}",
+      "strip_image_token": true
+    },
+    "metrics": {
+      "enabled": [
+        "bleu",
+        "rouge",
+        "meteor",
+        "bertscore",
+        "sbert_cos",
+        "clipscore"
+      ],
+      "clipscore_model": "openai/clip-vit-base-patch32"
+    }
+  },
+  "model_config": {
+    "model_name": "llava_onevision",
+    "adapter": "llava",
+    "model_path": "/home/Hu_xuanwei/model/LLaVA-OneVision-1.5-8B-Instruct",
+    "torch_dtype": "float16",
+    "device_map": {
+      "": 0
+    },
+    "trust_remote_code": true,
+    "env_name": "llava"
+  },
+  "runtime_snapshot": {
+    "python": "3.10.20 (main, Mar 11 2026, 17:46:40) [GCC 14.3.0]",
+    "platform": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
+    "torch": "2.6.0+cu124",
+    "cuda_available": "True",
+    "cuda_device_count": "1",
+    "cuda_name_0": "NVIDIA GeForce RTX 4090"
+  }
+}

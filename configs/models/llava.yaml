@@ -1,0 +1,7 @@
+model_name: llava_onevision
+adapter: llava
+model_path: /home/Hu_xuanwei/model/LLaVA-OneVision-1.5-8B-Instruct
+torch_dtype: float16
+device_map: '{"": 0}'
+trust_remote_code: true
+env_name: llava

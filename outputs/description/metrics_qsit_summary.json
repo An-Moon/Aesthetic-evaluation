@@ -1,0 +1,25 @@
+{
+  "pred_file": "/home/Hu_xuanwei/aesthetic_eval_framework/outputs/qsit_description_20260404_203943/predictions.jsonl",
+  "enabled": [
+    "bleu",
+    "rouge",
+    "meteor",
+    "bertscore",
+    "sbert_cos",
+    "clipscore"
+  ],
+  "metrics": {
+    "N": 6000.0,
+    "BLEU": 1.3095086271818985,
+    "ROUGE-1": 0.27845572447235506,
+    "ROUGE-2": 0.05583805147064646,
+    "ROUGE-L": 0.187868199247554,
+    "METEOR": 0.10796288551693033,
+    "BERT-P": 0.6708814052293698,
+    "BERT-R": 0.6035277303705613,
+    "BERT-F1": 0.6352064836422603,
+    "SBERT-Cos": 0.5084174828231335,
+    "CLIPScore": 0.26096008088688055,
+    "CLIP-N": 6000.0
+  }
+}

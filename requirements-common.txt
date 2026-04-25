@@ -1,0 +1,13 @@
+numpy
+pillow
+tqdm
+pyyaml
+torch
+torchvision
+transformers
+sacrebleu
+rouge-score
+nltk
+bert-score
+sentence-transformers
+scikit-learn

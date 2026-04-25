@@ -1,0 +1,12 @@
+model_name: unipercept
+adapter: unipercept
+model_path: /home/Hu_xuanwei/model/UniPercept
+unipercept_repo_root: /home/Hu_xuanwei/UniPercept
+device: cuda:0
+device_map: '{"": 0}'
+torch_dtype: bfloat16
+trust_remote_code: true
+infer_mode: generate
+chat_batch_size: 16
+env_name: artimuse
+notes: UniPercept follows InternVL-style API and can reuse artimuse env.

@@ -1,0 +1,9 @@
+model_name: aesexpert
+adapter: aesexpert
+model_path: /home/Hu_xuanwei/model/AesMMIT_LLaVA_v1.5_7b_240325
+llava_repo_root: /home/Hu_xuanwei/LLaVA
+conv_mode: llava_v1
+device: cuda:0
+device_map: auto
+env_name: aesexpert
+notes: AesExpert uses LLaVA official loader for llava_llama checkpoints.

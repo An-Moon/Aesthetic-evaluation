@@ -1,0 +1,9 @@
+model_name: qsit
+adapter: qsit
+model_path: /home/Hu_xuanwei/model/q-sit
+device: cuda:0
+torch_dtype: float16
+infer_mode: generate
+generate_batch_size: 8
+env_name: artquant
+notes: Q-SiT relies on LlavaOnevision API and usually needs transformers >= 4.45.

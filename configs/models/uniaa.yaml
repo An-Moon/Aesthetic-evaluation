@@ -1,0 +1,11 @@
+model_name: uniaa
+adapter: llava
+model_path: /home/Hu_xuanwei/data/UNIAA/model
+torch_dtype: float16
+device_map: '{"": 0}'
+trust_remote_code: true
+use_fast_tokenizer: false
+vision_tower_local_path: /home/Hu_xuanwei/model/LLaVA-OneVision-1.5-8B-Instruct
+vision_image_size: 336
+env_name: uniaa
+notes: UNIAA benchmark is LLaVA-based; this config uses LLaVA adapter for description task.

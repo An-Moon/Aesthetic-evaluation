@@ -1,0 +1,7 @@
+model_name: onealign
+adapter: onealign
+model_path: /home/Hu_xuanwei/model/one-align
+onealign_repo_root: /home/Hu_xuanwei/Q-Align
+device: cuda:0
+env_name: onealign
+notes: OneAlign uses Q-Align aesthetic scorer and outputs continuous aesthetic score as prediction string.

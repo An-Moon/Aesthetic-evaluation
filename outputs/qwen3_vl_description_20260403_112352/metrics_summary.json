@@ -1,0 +1,28 @@
+{
+  "pred_file": "/home/Hu_xuanwei/aesthetic_eval_framework/outputs/qwen3_vl_description_20260403_112352/predictions.jsonl",
+  "enabled": [
+    "bleu",
+    "rouge",
+    "meteor",
+    "bertscore",
+    "sbert_cos",
+    "clipscore"
+  ],
+  "metrics": {
+    "N": 6000.0,
+    "BLEU": 5.120318144443659,
+    "ROUGE-1": 0.4561226252493319,
+    "ROUGE-2": 0.12007134566119862,
+    "ROUGE-L": 0.2324655938645593,
+    "METEOR": 0.27440553444362786,
+    "BERT-P": 0.0,
+    "BERT-R": 0.0,
+    "BERT-F1": 0.0,
+    "BERT-Error": "\nAutoModel requires the PyTorch library but it was not found in your environment. Check out the instructions on the\ninstallation page: https://pytorch.org/get-started/locally/ and follow the ones that match your environment.\nPlease note that you may need to restart your runtime after installation.\n",
+    "SBERT-Cos": 0.0,
+    "SBERT-Error": "name 'nn' is not defined",
+    "CLIPScore": 0.0,
+    "CLIP-N": 0.0,
+    "CLIP-Error": "\nCLIPModel requires the PyTorch library but it was not found in your environment. Check out the instructions on the\ninstallation page: https://pytorch.org/get-started/locally/ and follow the ones that match your environment.\nPlease note that you may need to restart your runtime after installation.\n"
+  }
+}

@@ -1,0 +1,10 @@
+model_name: qwen3_vl_lora_ft
+adapter: qwen
+model_path: /home/Hu_xuanwei/Qwen3-VL-8B-Instruct
+peft_adapter_path: /home/Hu_xuanwei/aesthetic_finetune_framework/checkpoints/qwen3vl_lora/final
+torch_dtype: bfloat16
+device_map: '{"": 0}'
+trust_remote_code: true
+env_name: qwen_vl
+attn_implementation: sdpa
+merge_lora_on_load: false

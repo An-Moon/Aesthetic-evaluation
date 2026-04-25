@@ -1,0 +1,8 @@
+model_name: qwen3_vl
+adapter: qwen
+model_path: /home/Hu_xuanwei/Qwen3-VL-8B-Instruct
+torch_dtype: bfloat16
+device_map: '{"": 0}'
+trust_remote_code: true
+env_name: qwen_vl
+attn_implementation: sdpa
