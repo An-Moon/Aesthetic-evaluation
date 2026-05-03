@@ -1,0 +1,29 @@
+task: score
+seed: 42
+
+runtime:
+  output_root: ${AES_OUTPUT_ROOT:-outputs}
+  cudnn_benchmark: true
+  allow_tf32: true
+  log_batch_time: true
+
+data:
+  dataset_jsonl: ${AVA_SMOKE_JSONL:-data/ava_smoke_64.jsonl}
+  image_root: ""
+  image_alt_root: null
+  sample_limit: null
+  sample_size: null
+  shuffle: false
+  sample_manifest_in: null
+  sample_manifest_out: ${AVA_SMOKE_MANIFEST:-outputs/ava_smoke_manifest.txt}
+
+dataloader:
+  batch_size: 1
+
+score:
+  target_range: [0.0, 10.0]
+
+prompt:
+  score_prompt: "Rate the aesthetic quality of this image from 1 to 10. Only output a single float number."
+  min_score: 1.0
+  max_score: 10.0

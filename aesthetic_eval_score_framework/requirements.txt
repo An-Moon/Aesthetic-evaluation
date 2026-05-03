@@ -1,0 +1,8 @@
+-r requirements-common.txt
+torch>=2.1
+torchvision>=0.16
+transformers>=4.37
+accelerate>=0.25
+sentencepiece>=0.1.99
+protobuf>=4.25
+qwen-vl-utils>=0.0.8

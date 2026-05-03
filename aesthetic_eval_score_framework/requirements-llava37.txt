@@ -1,0 +1,13 @@
+-r requirements-common.txt
+torch>=2.1
+torchvision>=0.16
+transformers>=4.37,<4.38
+accelerate>=0.25
+sentencepiece>=0.1.99
+protobuf>=4.25
+einops>=0.7
+peft>=0.8
+
+# Intended for ArtiMuse, ArtQuant, AesExpert, UniPercept, and OneAlign/Q-Align
+# in the development environment used for the paper. Some official repositories
+# may require their own additional dependencies.

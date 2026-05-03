@@ -1,0 +1,4 @@
+{"sample_id": "example_0", "image": "example_0.jpg", "gt_score": 5.25, "dataset": "AVA", "split": "smoke"}
+{"sample_id": "example_1", "image": "example_1.jpg", "gt_score": 6.84, "dataset": "AVA", "split": "smoke"}
+{"sample_id": "example_2", "image": "example_2.jpg", "gt_score": 4.74, "dataset": "AVA", "split": "smoke"}
+{"sample_id": "example_3", "image": "example_3.jpg", "gt_score": 6.42, "dataset": "AVA", "split": "smoke"}
