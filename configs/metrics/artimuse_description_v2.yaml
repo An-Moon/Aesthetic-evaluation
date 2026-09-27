@@ -1,0 +1,39 @@
+protocol_name: artimuse_description_v2
+strict: true
+scale: zero_to_one
+cpu_threads: 8
+enabled: [bleu, rouge, meteor, bertscore, sbert_cos, clip_cos, spice]
+length_penalty:
+  enabled: true
+  formula: min(pred_words,ref_words)/max(pred_words,ref_words)
+  aggregation: apply_per_sample_then_macro_average
+  preserves_raw_metrics: true
+spice:
+  implementation: pycocoevalcap
+  package_version: "1.2"
+  runner: aesthetic_eval.spice_metric_strict_v2_chunk_checkpoint_java8
+  java_path: ${AESTHETIC_JAVA}
+  cache_enabled: false
+  cache_dir: ${AESTHETIC_OUTPUT_ROOT}/metric_cache/spice
+  chunk_size: 500
+  timeout_seconds_per_chunk: 2400
+  threads: 8
+  java_heap_gb: 24
+  checkpoint_enabled: true
+  checkpoint_dir: ${AESTHETIC_OUTPUT_ROOT}/metric_checkpoints/artimuse_spice_v2
+models:
+  bertscore:
+    repo_id: microsoft/deberta-base-mnli
+    revision: a80a6eb013898011540b19bf1f64e21eb61e53d6
+    local_path: ${AESTHETIC_METRIC_MODEL_ROOT}/deberta-base-mnli_a80a6eb
+    num_layers: 9
+  sbert:
+    repo_id: sentence-transformers/all-mpnet-base-v2
+    revision: e8c3b32edf5434bc2275fc9bab85f82640a19130
+    local_path: ${AESTHETIC_METRIC_MODEL_ROOT}/all-mpnet-base-v2_e8c3b32
+    backend: sentence_transformers
+  clip_cos:
+    repo_id: openai/clip-vit-base-patch32
+    revision: 3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268
+    local_path: ${AESTHETIC_METRIC_MODEL_ROOT}/clip-vit-base-patch32_3d74acf
+    text_policy: truncate_to_model_limit_77
