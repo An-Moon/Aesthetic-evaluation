@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aesthetic-evaluation"
+version = "0.1.0"
+description = "Fail-loud and provenance-aware evaluation for multimodal aesthetic models"
+readme = "README.md"
+requires-python = ">=3.10,<3.12"
+license = {file = "LICENSE"}
+dependencies = [
+  "numpy>=1.26,<3",
+  "Pillow>=10,<12",
+  "PyYAML>=6,<7",
+  "tqdm>=4.66,<5",
+]
+
+[project.optional-dependencies]
+metrics = [
+  "bert-score==0.3.13",
+  "nltk==3.9.4",
+  "pycocoevalcap==1.2",
+  "rouge-score==0.1.2",
+  "sacrebleu==2.6.0",
+  "sentence-transformers==5.3.0",
+  "transformers==5.7.0",
+]
+viz = ["matplotlib>=3.9,<4"]
+dev = ["ruff>=0.9,<1"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
