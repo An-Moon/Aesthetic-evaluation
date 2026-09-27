@@ -1,0 +1,3 @@
+{"sample_id":"synthetic-0","image":"synthetic-0.png","gt_score":2.0,"dataset":"synthetic","split":"test"}
+{"sample_id":"synthetic-1","image":"synthetic-1.png","gt_score":5.0,"dataset":"synthetic","split":"test"}
+{"sample_id":"synthetic-2","image":"synthetic-2.png","gt_score":8.0,"dataset":"synthetic","split":"test"}

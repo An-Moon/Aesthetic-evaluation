@@ -1,0 +1,26 @@
+task: score
+seed: 42
+runtime:
+  output_root: ${AESTHETIC_OUTPUT_ROOT}/score/artimuse
+  deterministic: true
+  cudnn_benchmark: false
+  allow_tf32: false
+  log_batch_time: true
+data:
+  dataset: artimuse_10k
+  split: test
+  dataset_jsonl: ${AESTHETIC_DATA_ROOT}/Artimuse/score/test.json
+  image_root: ${AESTHETIC_DATA_ROOT}/Artimuse/images
+  image_alt_root: null
+  sample_limit: null
+  sample_size: null
+  shuffle: false
+  sample_manifest_in: null
+  sample_manifest_out: null
+  strict_data: true
+dataloader: {batch_size: 4}
+score: {target_range: [0.0, 10.0]}
+prompt:
+  score_prompt: "Rate the overall aesthetic quality of this image from 1 to 10. Output exactly one numeric value and no explanation."
+  min_score: 1.0
+  max_score: 10.0

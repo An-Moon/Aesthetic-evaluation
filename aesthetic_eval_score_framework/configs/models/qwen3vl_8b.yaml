@@ -1,0 +1,19 @@
+model_name: Qwen3VL-8B-Instruct
+adapter: qwen3vl_prompt
+
+model_path: ${AESTHETIC_MODEL_ROOT}/Qwen3-VL-8B-Instruct
+device_map: {"": 0}
+torch_dtype: bfloat16
+trust_remote_code: true
+
+score_source: prompt_numeric
+score_method: prompt_numeric
+official_alignment: generic_prompt_not_official
+adapter_version: v1
+raw_score_range: [1.0, 10.0]
+
+generation:
+  max_new_tokens: 8
+  do_sample: false
+
+notes: "Generic prompt-numeric scoring for Qwen3-VL-8B; experimental and not an official scoring path."

@@ -1,0 +1,14 @@
+model_name: OneAlign
+adapter: qalign
+
+repo_root: ${AESTHETIC_MODEL_ROOT}/upstream/Q-Align
+model_path: ${AESTHETIC_MODEL_ROOT}/one-align
+device: cuda:0
+
+score_source: qalign_aesthetic_scorer
+score_method: official_logits_wa5
+official_alignment: official_qalign_aesthetic_scorer
+adapter_version: v1
+raw_score_range: [0.0, 1.0]
+
+notes: "Uses Q-Align official QAlignAestheticScorer with local OneAlign weights; raw WA5 score is mapped from 0-1 to 0-10."

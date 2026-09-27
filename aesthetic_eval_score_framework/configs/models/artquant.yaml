@@ -1,0 +1,15 @@
+name: ArtQuant-APDD
+adapter: artquant
+model_name: ArtQuant-APDD
+weights: ${AESTHETIC_MODEL_ROOT}/ArtQuant/APDD
+base_model: ${AESTHETIC_MODEL_ROOT}/mplug-owl2-llama2-7b
+artquant_root: ${AESTHETIC_MODEL_ROOT}/upstream/ArtQuant
+batch_size: 4
+device: cuda
+model_loader_name: deqa_lora_prompt_apdd
+score_source: artquant_official
+score_method: official_logits_wa5
+official_alignment: official_artquant_logits_mapping
+adapter_version: v1
+raw_score_range: [0.0, 10.0]
+notes: "Uses official ArtQuant repo source; adapter loads mPLUG-Owl2 + LoRA and scores via logits"

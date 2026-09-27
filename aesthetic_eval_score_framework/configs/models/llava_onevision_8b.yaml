@@ -1,0 +1,21 @@
+model_name: LLaVA-OneVision-1.5-8B-Instruct
+adapter: llava_onevision_prompt
+
+model_path: ${AESTHETIC_MODEL_ROOT}/LLaVA-OneVision-1.5-8B-Instruct
+device: cuda
+device_map: null
+torch_dtype: float16
+trust_remote_code: true
+use_fast: true
+
+score_source: prompt_numeric
+score_method: prompt_numeric
+official_alignment: generic_prompt_not_official
+adapter_version: v1
+raw_score_range: [1.0, 10.0]
+
+generation:
+  max_new_tokens: 8
+  do_sample: false
+
+notes: "Generic prompt-numeric scoring for LLaVA-OneVision; recommended env follows the existing successful script."

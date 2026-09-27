@@ -1,0 +1,23 @@
+model_name: UniPercept
+adapter: unipercept
+
+repo_root: ${AESTHETIC_MODEL_ROOT}/upstream/UniPercept
+model_path: ${AESTHETIC_MODEL_ROOT}/UniPercept
+device: cuda:0
+torch_dtype: bfloat16
+use_flash_attn: false
+low_cpu_mem_usage: true
+image_size: 448
+
+score_desc: aesthetics
+score_source: unipercept_reward_score
+score_method: official_score
+official_alignment: official_unipercept_reward_score
+adapter_version: v1
+raw_score_range: [0.0, 100.0]
+
+generation:
+  max_new_tokens: 1024
+  do_sample: false
+
+notes: "Uses UniPercept official reward-style score() from repo source; IAA aesthetics score is mapped from 0-100 to 0-10."

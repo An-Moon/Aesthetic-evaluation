@@ -1,0 +1,24 @@
+name: AesExpert
+adapter: aesexpert
+model_path: ${AESTHETIC_MODEL_ROOT}/AesMMIT_LLaVA_v1.5_7b_240325
+model_base: null
+llava_repo_root: ${AESTHETIC_MODEL_ROOT}/upstream/LLaVA
+conv_mode: llava_v1
+device: cuda
+model_name: AesExpert
+score_source: aesexpert_logits_wa5
+score_method: fallback_logits_wa5
+official_alignment: fallback_no_official_regression_script_found
+adapter_version: v2
+raw_score_range: [0.0, 10.0]
+score_mode: logits_wa5
+score_tokens: ["excellent", "good", "fair", "poor", "bad"]
+score_weights: [10.0, 7.5, 5.0, 2.5, 0.0]
+logits_prompt: "How would you rate the aesthetics of this image?"
+logits_answer_prefix: " The aesthetics of the image is"
+generation:
+  max_new_tokens: 16
+  temperature: 0.2
+  top_p: null
+  num_beams: 1
+notes: "AesExpert uses LLaVA v1.5 loader; default score is fallback logits WA5 because no official regression scorer was found"

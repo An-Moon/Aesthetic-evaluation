@@ -1,0 +1,19 @@
+model_name: artimuse
+adapter: artimuse
+
+repo_root: ${AESTHETIC_MODEL_ROOT}/upstream/ArtiMuse
+model_path: ${AESTHETIC_MODEL_ROOT}/ArtiMuse_hf
+device: cuda:0
+torch_dtype: bfloat16
+use_flash_attn: false
+low_cpu_mem_usage: true
+
+score_source: official_score
+score_method: official_score
+official_alignment: official_model_score_method
+adapter_version: v1
+raw_score_range: [0.0, 100.0]
+
+generation:
+  max_new_tokens: 8192
+  do_sample: false

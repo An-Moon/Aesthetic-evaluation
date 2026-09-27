@@ -1,0 +1,31 @@
+task: score
+seed: 42
+
+runtime:
+  output_root: ${AESTHETIC_OUTPUT_ROOT}/score
+  deterministic: true
+  cudnn_benchmark: false
+  allow_tf32: false
+  log_batch_time: true
+
+data:
+  dataset_jsonl: ${AESTHETIC_DATA_ROOT}/AVA/test.jsonl
+  image_root: ${AESTHETIC_DATA_ROOT}/AVA/images
+  image_alt_root: null
+  sample_limit: null
+  sample_size: 8000
+  shuffle: false
+  strict_data: true
+  sample_manifest_in: null
+  sample_manifest_out: null
+
+dataloader:
+  batch_size: 4
+
+score:
+  target_range: [0.0, 10.0]
+
+prompt:
+  score_prompt: "Rate the aesthetic quality of this image from 1 to 10. Only output a single float number."
+  min_score: 1.0
+  max_score: 10.0

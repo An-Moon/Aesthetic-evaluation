@@ -1,0 +1,21 @@
+model_name: Q-SiT
+adapter: qsit
+
+model_path: ${AESTHETIC_MODEL_ROOT}/q-sit
+device: cuda:0
+torch_dtype: float16
+trust_remote_code: true
+low_cpu_mem_usage: true
+
+score_source: qsit_official_wa5
+score_method: official_logits_wa5
+official_alignment: official_qsit_transformers_wa5
+adapter_version: v1
+raw_score_range: [0.0, 1.0]
+
+score_tokens: ["Excellent", "Good", "Fair", "Poor", "Bad"]
+score_weights: [1.0, 0.75, 0.5, 0.25, 0.0]
+score_query: "Assume you are an image aesthetics evaluator. Your rating should be chosen from the following five categories: Excellent, Good, Fair, Poor, and Bad (from high to low). How would you rate the aesthetics of this image?"
+score_prefix: "The aesthetics of this image is "
+
+notes: "Uses Q-SiT official Transformers WA5 scoring pattern; raw score is mapped from 0-1 to 0-10."

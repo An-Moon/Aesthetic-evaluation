@@ -1,0 +1,21 @@
+model_name: InternVL3.5-8B
+adapter: internvl_prompt
+
+model_path: ${AESTHETIC_MODEL_ROOT}/InternVL3_5-8B
+device: cuda:0
+device_map: {"": 0}
+torch_dtype: bfloat16
+trust_remote_code: true
+attn_implementation: null
+
+score_source: prompt_numeric
+score_method: prompt_numeric
+official_alignment: generic_prompt_not_official
+adapter_version: v1
+raw_score_range: [1.0, 10.0]
+
+generation:
+  max_new_tokens: 16
+  do_sample: false
+
+notes: "Generic prompt-numeric scoring for InternVL3.5-8B; recommended env: qwen_vl or a compatible InternVL env."
