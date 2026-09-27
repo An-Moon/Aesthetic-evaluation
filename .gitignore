@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+configs/local/
+*.local.yaml
+
+# Models, datasets, caches and runtime products
+model/
+models/
+data/
+outputs/
+new_outputs/
+uniaa_outputs*/
+artifacts/
+spice_cache*/
+metric_cache/
+metric_checkpoints/
+
+# Process and recovery state
+*.log
+*.pid
+*.state
+*.exit
+*.lock
+*.aria2
+*.incomplete
+*.corrupt_tail
+
+# Large or duplicated submissions and paper intermediates
+anonymous_eval_submission*
+judge_metric_validity_100/
+*.tar.gz
+*.zip
+*.docx
+*.odt
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/

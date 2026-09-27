@@ -1,0 +1,26 @@
+Aesthetic Evaluation Framework
+Copyright 2026 An-Moon contributors
+
+This repository's original orchestration, protocol, parsing, metric and
+reporting code is licensed under Apache License 2.0.
+
+The repository provides integration adapters for independently distributed
+models and software. Their source code, checkpoints and datasets are not
+vendored and are not relicensed by this project. Users must obtain them from
+their official sources and comply with the corresponding terms.
+
+Documented external projects include LLaVA, InternVL, Qwen-VL,
+LLaVA-OneVision, GLM-4V, UNIAA, ArtiMuse, UniPercept, Aes-R1, ArtQuant,
+AesExpert, Q-SiT, Q-Align/OneAlign, Hugging Face Transformers,
+SentenceTransformers, BERTScore and pycocoevalcap/SPICE.
+
+LLaVA is distributed under Apache License 2.0 in the audited upstream checkout.
+Q-Align/OneAlign uses the S-Lab License 1.0, which restricts commercial use;
+this repository only imports a separately installed copy and does not vendor
+Q-Align source or weights. For projects whose local snapshot did not include a
+license file, this release publishes only the independently written adapter and
+requires users to verify the upstream terms before use.
+
+Dataset annotations, images, prompt examples and model-generated predictions
+are not distributed in this release. Dataset preparation scripts do not grant
+redistribution rights.
