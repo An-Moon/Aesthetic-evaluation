@@ -1,0 +1,13 @@
+model_name: artquant
+adapter: artquant
+model_path: ${AESTHETIC_MODEL_ROOT}/ArtQuant/APDD
+model_base: ${AESTHETIC_MODEL_ROOT}/mplug-owl2-llama2-7b
+preprocessor_path: ${AESTHETIC_MODEL_ROOT}/mplug-owl2-llama2-7b
+artquant_repo_root: ${AESTHETIC_MODEL_ROOT}/upstream/ArtQuant
+device: cuda:0
+load_8bit: false
+load_4bit: false
+infer_mode: generate
+conv_mode: mplug_owl2
+environment: llava37
+validity_status: validated_with_template_output_caveat

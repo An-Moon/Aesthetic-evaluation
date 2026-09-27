@@ -1,0 +1,12 @@
+model_name: qwen35_9b
+adapter: qwen
+model_path: ${AESTHETIC_MODEL_ROOT}/Qwen3.5-9B
+checkpoint_repo_id: Qwen/Qwen3.5-9B
+checkpoint_revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a
+torch_dtype: bfloat16
+device_map: '{"": 0}'
+trust_remote_code: false
+attn_implementation: sdpa
+enable_thinking: false
+strip_thinking_output: true
+environment: qwen_internvl

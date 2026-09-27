@@ -1,0 +1,15 @@
+model_name: uniaa_llava
+adapter: uniaa
+model_path: ${AESTHETIC_MODEL_ROOT}/UNIAA/model
+llava_repo_path: ${AESTHETIC_MODEL_ROOT}/upstream/LLaVA
+llava_model_name: llava-v1.5
+conv_mode: llava_v1
+vision_tower_name: openai/clip-vit-large-patch14-336
+vision_tower_local_path: ${AESTHETIC_MODEL_ROOT}/eval_metrics/clip-vit-large-patch14-336_ce19dc9
+torch_dtype: float16
+device_map: auto
+require_cuda: true
+trust_remote_code: true
+use_fast_tokenizer: false
+use_flash_attn: false
+environment: llava37

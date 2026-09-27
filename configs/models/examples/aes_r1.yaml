@@ -1,0 +1,19 @@
+model_name: aes_r1
+adapter: aes_r1
+model_path: ${AESTHETIC_MODEL_ROOT}/Aes-R1
+checkpoint_repo_id: ssssmark/Aes-R1
+checkpoint_revision: 0fa817ed9ac2c819750270feb7856e947e83f8cb
+base_model: Qwen/Qwen2.5-VL-7B-Instruct
+model_type: qwen2_5_vl
+torch_dtype: bfloat16
+device_map: '{"": 0}'
+trust_remote_code: false
+local_files_only: true
+use_fast: false
+attn_implementation: flash_attention_2
+min_pixels: 3136
+max_pixels: 262144
+repetition_penalty: 1.05
+use_cache: true
+response_mode: full_text
+environment: aes_r1

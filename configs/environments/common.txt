@@ -1,0 +1,13 @@
+python==3.10.*
+PyYAML==6.0.2
+numpy==1.26.4
+Pillow==10.4.0
+tqdm==4.67.1
+sacrebleu==2.6.0
+rouge-score==0.1.2
+nltk==3.9.4
+bert-score==0.3.13
+sentence-transformers==5.3.0
+transformers==5.7.0
+torch==2.11.0
+pycocoevalcap==1.2

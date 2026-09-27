@@ -1,0 +1,25 @@
+protocol_name: uniaa_perception_official_v1
+task: perception
+seed: 42
+data:
+  dataset_json: ${AESTHETIC_DATA_ROOT}/prepared/uniaa_perception/test_5354.jsonl
+  image_root: ${AESTHETIC_DATA_ROOT}/UNIAA/A_UNIAA_Bench/perception
+  image_alt_root: null
+  sample_limit: null
+  strict_data: true
+prompt: {template: "{question}", strip_image_token: true, text_context_file: null}
+generation:
+  max_new_tokens: 1024
+  do_sample: false
+  temperature: null
+  top_p: null
+  num_beams: 1
+  use_cache: true
+dataloader: {batch_size: 1, num_workers: 1}
+runtime:
+  deterministic: true
+  cudnn_benchmark: false
+  allow_tf32: false
+  strict_inference: true
+  log_batch_time: true
+  output_root: ${AESTHETIC_OUTPUT_ROOT}/uniaa_perception_official_v1

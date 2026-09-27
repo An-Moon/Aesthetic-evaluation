@@ -1,0 +1,12 @@
+model_name: artimuse
+adapter: artimuse
+repo_root: ${AESTHETIC_MODEL_ROOT}/upstream/ArtiMuse
+model_path: ${AESTHETIC_MODEL_ROOT}/ArtiMuse_hf
+torch_dtype: bfloat16
+image_size: 448
+device: cuda:0
+trust_remote_code: true
+use_flash_attn: false
+low_cpu_mem_usage: true
+environment: llava37
+validity_status: in_domain_only_on_artimuse_description

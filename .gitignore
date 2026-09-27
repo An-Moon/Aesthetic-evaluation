@@ -16,16 +16,16 @@ configs/local/
 *.local.yaml
 
 # Models, datasets, caches and runtime products
-model/
-models/
-data/
-outputs/
-new_outputs/
-uniaa_outputs*/
-artifacts/
-spice_cache*/
-metric_cache/
-metric_checkpoints/
+/model/
+/models/
+/data/
+/outputs/
+/new_outputs/
+/uniaa_outputs*/
+/artifacts/
+/spice_cache*/
+/metric_cache/
+/metric_checkpoints/
 
 # Process and recovery state
 *.log

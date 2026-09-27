@@ -1,0 +1,14 @@
+model_name: unipercept
+adapter: unipercept
+model_path: ${AESTHETIC_MODEL_ROOT}/UniPercept
+unipercept_repo_root: ${AESTHETIC_MODEL_ROOT}/upstream/UniPercept
+device: cuda:0
+device_map: '{"": 0}'
+torch_dtype: bfloat16
+image_size: 448
+trust_remote_code: true
+use_flash_attn: true
+low_cpu_mem_usage: true
+infer_mode: generate
+chat_batch_size: 16
+environment: llava_onevision

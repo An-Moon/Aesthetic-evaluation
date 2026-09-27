@@ -1,0 +1,10 @@
+model_name: llava_onevision_8b
+adapter: llava
+model_path: ${AESTHETIC_MODEL_ROOT}/LLaVA-OneVision-1.5-8B-Instruct
+checkpoint_repo_id: lmms-lab/LLaVA-OneVision-1.5-8B-Instruct
+checkpoint_revision: e137910552d616eb0f7305147ca054311a90c542
+torch_dtype: bfloat16
+device_map: '{"": 0}'
+trust_remote_code: true
+attn_implementation: flash_attention_2
+environment: llava_onevision

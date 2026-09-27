@@ -1,0 +1,12 @@
+model_name: glm46v_flash
+adapter: glm4v
+model_path: ${AESTHETIC_MODEL_ROOT}/GLM-4.6V-Flash
+checkpoint_repo_id: zai-org/GLM-4.6V-Flash
+checkpoint_revision: 411bb4d77144a3f03accbf4b780f5acb8b7cde4e
+torch_dtype: bfloat16
+device_map: '{"": 0}'
+trust_remote_code: true
+attn_implementation: sdpa
+enable_thinking: false
+strip_thinking_output: true
+environment: qwen_internvl

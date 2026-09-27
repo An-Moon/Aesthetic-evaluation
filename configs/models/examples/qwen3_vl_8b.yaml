@@ -1,0 +1,10 @@
+model_name: qwen3_vl_8b
+adapter: qwen
+model_path: ${AESTHETIC_MODEL_ROOT}/Qwen3-VL-8B-Instruct
+checkpoint_repo_id: Qwen/Qwen3-VL-8B-Instruct
+checkpoint_revision: 0c351dd01ed87e9c1b53cbc748cba10e6187ff3b
+torch_dtype: bfloat16
+device_map: '{"": 0}'
+trust_remote_code: true
+attn_implementation: sdpa
+environment: qwen_internvl

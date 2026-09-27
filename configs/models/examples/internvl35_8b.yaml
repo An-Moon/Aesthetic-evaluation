@@ -1,0 +1,11 @@
+model_name: internvl35_8b
+adapter: internvl
+model_path: ${AESTHETIC_MODEL_ROOT}/InternVL3_5-8B
+checkpoint_repo_id: OpenGVLab/InternVL3_5-8B
+checkpoint_revision: 9bb6a56ad9cc69db95e2d4eeb15a52bbcac4ef79
+torch_dtype: float16
+image_size: 448
+device_map: '{"": 0}'
+trust_remote_code: true
+use_fast_tokenizer: true
+environment: qwen_internvl

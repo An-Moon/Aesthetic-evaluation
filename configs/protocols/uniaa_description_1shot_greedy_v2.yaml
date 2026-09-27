@@ -1,0 +1,31 @@
+protocol_name: uniaa_description_fixed_first_1shot_greedy_v2
+experiment_name: uniaa_description_1shot_500_greedy_v2
+seed: 20260829
+task: description
+data:
+  dataset_json: ${AESTHETIC_DATA_ROOT}/prepared/uniaa_description_1shot/test_500.jsonl
+  image_root: ${AESTHETIC_DATA_ROOT}/UNIAA/A_UNIAA_Bench/description
+  image_alt_root: null
+  sample_limit: null
+  strict_data: true
+preprocess: {image_size: 336, interpolation: bicubic}
+generation:
+  max_new_tokens: 256
+  do_sample: false
+  temperature: null
+  top_p: null
+  num_beams: 1
+  use_cache: true
+dataloader: {batch_size: 1}
+runtime:
+  device: cuda
+  deterministic: true
+  allow_tf32: false
+  cudnn_benchmark: false
+  log_batch_time: true
+  strict_inference: true
+  output_root: ${AESTHETIC_OUTPUT_ROOT}/uniaa_description_1shot_greedy_v2
+prompt:
+  template: "{question}"
+  strip_image_token: true
+  text_context_file: ${UNIAA_1SHOT_CONTEXT_FILE}

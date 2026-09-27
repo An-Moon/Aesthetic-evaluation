@@ -1,0 +1,6 @@
+# LLaVA-v1.5-family adapters: UNIAA, ArtiMuse, ArtQuant, AesExpert.
+python==3.10.20
+torch==2.1.2
+torchvision==0.16.2
+transformers==4.37.2
+accelerate==0.21.0

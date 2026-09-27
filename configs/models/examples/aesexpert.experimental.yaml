@@ -1,0 +1,14 @@
+model_name: aesexpert
+adapter: aesexpert
+model_path: ${AESTHETIC_MODEL_ROOT}/AesMMIT_LLaVA_v1.5_7b_240325
+checkpoint_repo_id: qyuan/AesMMIT_LLaVA_v1.5_7b_240325
+checkpoint_revision: 896973238264ba52730e47188233cd220b0e7a6e
+llava_repo_root: ${AESTHETIC_MODEL_ROOT}/upstream/LLaVA
+conv_mode: llava_v1
+vision_tower_name: openai/clip-vit-large-patch14-336
+vision_tower_local_path: ${AESTHETIC_MODEL_ROOT}/eval_metrics/clip-vit-large-patch14-336_ce19dc9
+device: cuda:0
+device_map: auto
+use_flash_attn: false
+environment: llava37
+validity_status: invalid_for_current_description_protocol

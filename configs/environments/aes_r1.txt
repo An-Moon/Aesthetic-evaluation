@@ -1,0 +1,6 @@
+# Aes-R1 checkpoint-declared environment.
+python==3.10.*
+transformers==4.49.0
+flash-attn==2.7.4.post1
+accelerate>=1.2,<2
+qwen-vl-utils>=0.0.10

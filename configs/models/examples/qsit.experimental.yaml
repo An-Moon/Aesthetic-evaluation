@@ -1,0 +1,11 @@
+model_name: qsit
+adapter: qsit
+model_path: ${AESTHETIC_MODEL_ROOT}/q-sit
+device: cuda:0
+torch_dtype: float16
+trust_remote_code: true
+low_cpu_mem_usage: true
+infer_mode: generate
+generate_batch_size: 8
+environment: qwen_internvl
+validity_status: invalid_for_16shot_context_copying
