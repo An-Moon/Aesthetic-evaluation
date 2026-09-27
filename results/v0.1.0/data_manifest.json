@@ -1,0 +1,59 @@
+{
+  "release_version": "v0.1.0",
+  "redistribution_policy": "metadata_only",
+  "datasets": {
+    "artimuse_description": {
+      "official_url": "https://huggingface.co/datasets/Thunderbolt215215/ArtiMuse-10K",
+      "train_count": 79968,
+      "train_jsonl_sha256": "8d879a8c96d7f21ae7cd890b41069bf24e894abbcac24aed2c37c32dd9cb0726",
+      "test_count": 7984,
+      "test_jsonl_sha256": "26295702a059b789082dfd9bb0d1e11e7ba7cc3bd57fcd41e7e926e05fd4d09d",
+      "score_test_count": 1002,
+      "score_test_json_sha256": "46c4262714de5712e4411822b7630c9afd42f7db2dc0def36c53cc59ecb3b510",
+      "image_count": 1002,
+      "known_limitations": [
+        "The dataset license prohibits redistribution; no images or annotations are included here.",
+        "The ArtiMuse checkpoint is in-domain on this dataset and is excluded from the primary cross-model group comparison."
+      ]
+    },
+    "uniaa_description": {
+      "official_url": "https://github.com/KlingAIResearch/Uniaa",
+      "source_count": 501,
+      "source_json_sha256": "ac7432fdff6caf95bab89b07d6b04bf551ef2599dd6cf1a9e4d240ed9ce117bc",
+      "fixed_example_original_index": 0,
+      "fixed_example_source_id": "images/00855.jpg",
+      "fixed_example_image_sha256": "a353aac82c347b8fbf9211f0b06e9896d0e58d905cae8b8dadf017015c0994a6",
+      "fixed_example_reference_sha256": "f58f5dffcb479deb893f675cc5f5dc1a7df454c845ebdeb6849380d3e36206a6",
+      "test_count": 500,
+      "test_indices_sha256": "ce3d3dbfc3bf96c4969f3d31b46f0f63b58e370c2de98e636f7bfb1fd721ab06",
+      "derived_test_jsonl_sha256": "48f4c8924d453e6b86cf087ee9893f03d345712c5e91030e295c256b4c8f8a4c",
+      "context_json_sha256": "7fc7d1d867e3ab15ef630ba12bc5d2926e43a7b8ca53aa71c15b19df61e862cd",
+      "example_in_test": false
+    },
+    "uniaa_perception": {
+      "official_url": "https://github.com/KlingAIResearch/Uniaa",
+      "source_count": 5354,
+      "source_json_sha256": "1ac3f37ce0662435b0957c4f8f2725d677bd3630baeb69a035c536d8d9c72e61",
+      "prepared_count": 5354,
+      "prepared_jsonl_sha256": "daecae6402053fd4602325cee42748ce4c1ed45b67f94f7062ba1d619c28f8a5",
+      "dimension_counts": {
+        "color": 999,
+        "composition": 1064,
+        "content": 787,
+        "focus": 1271,
+        "light": 769,
+        "sentiment": 464
+      },
+      "question_type_counts": {
+        "how": 1319,
+        "what": 2238,
+        "yes_no": 1797
+      },
+      "candidate_count_distribution": {
+        "2": 2100,
+        "3": 1775,
+        "4": 1479
+      }
+    }
+  }
+}

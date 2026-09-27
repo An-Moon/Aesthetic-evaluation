@@ -1,0 +1,25 @@
+{
+  "protocol_name": "artimuse_description_16shot_text_v1",
+  "instruction_sha256": "12ce6dcb6183be5522d318c9818bcc6c08385e7787d6c81ae348803f9ed21b4a",
+  "selection_rule": "For each of eight dimensions, rank 1 is closest to the train-set median reference length; rank 2 minimizes lexical overlap with rank 1 and then minimizes distance to the median. Test-set source IDs are excluded before selection.",
+  "examples_per_dimension": 2,
+  "example_count": 16,
+  "examples": [
+    {"order": 1, "source_line": 12335, "source_id": "image17_714.jpg", "dimension": "Composition & Structure", "word_count": 95, "reference_sha256": "000e0ca368487e3b5bffca45d056568a49a7b7a9f73a636b49bacc139a841c5d", "rank": 1},
+    {"order": 2, "source_line": 6986, "source_id": "image5_727.jpg", "dimension": "Composition & Structure", "word_count": 96, "reference_sha256": "f5669a133c11415885d5f5a67fb58709755e28d4d30fca8ce8833ed2fa0b2f02", "rank": 2},
+    {"order": 3, "source_line": 17764, "source_id": "image0_803.jpg", "dimension": "Emotion & Viewer Response", "word_count": 89, "reference_sha256": "001907a643bbc48c72e1826db10f9d518c8e762417bde10456ba26631257d0a9", "rank": 1},
+    {"order": 4, "source_line": 23554, "source_id": "image5_506.jpg", "dimension": "Emotion & Viewer Response", "word_count": 85, "reference_sha256": "bb9a0bb82d031a89e7ffd81b9f37ba9a2f145d63580d96bb09db8fb69e55e50e", "rank": 2},
+    {"order": 5, "source_line": 54863, "source_id": "image16_710.jpg", "dimension": "Originality & Creativity", "word_count": 88, "reference_sha256": "01fa47e09b14f7608dccd26c9ee989be111d312e42fc1bee3a3660e16a57893c", "rank": 1},
+    {"order": 6, "source_line": 27667, "source_id": "image6_25.jpg", "dimension": "Originality & Creativity", "word_count": 87, "reference_sha256": "8632fc9504f954cd73c412f8b2773e0699fa13ea8e05005279852d653c32aa5f", "rank": 2},
+    {"order": 7, "source_line": 69596, "source_id": "image0_1381.jpg", "dimension": "Overall Evaluation", "word_count": 92, "reference_sha256": "0076941fe3ff1a0964c8f7be5d875b49da7e3dedd3bd61acb91b84de0d3faf57", "rank": 1},
+    {"order": 8, "source_line": 67929, "source_id": "image16_640.jpg", "dimension": "Overall Evaluation", "word_count": 88, "reference_sha256": "3b1fc6fbe89aa9c579a5fcadd05ed5c94c0c8886916a4219b033273ad67c496a", "rank": 2},
+    {"order": 9, "source_line": 13071, "source_id": "image0_38.jpg", "dimension": "Overall Gestalt", "word_count": 91, "reference_sha256": "0205f79d3b2915d01cb1e9b40b549fdf47117e5a44de3f6f50b60f023dbcb2aa", "rank": 1},
+    {"order": 10, "source_line": 74967, "source_id": "image2_254.jpg", "dimension": "Overall Gestalt", "word_count": 85, "reference_sha256": "514ec7d8effba0211bbd1801ce93091369fa2caafd3eceaf5b507029aa9ceb12", "rank": 2},
+    {"order": 11, "source_line": 34991, "source_id": "image2_478.jpg", "dimension": "Technical Execution", "word_count": 89, "reference_sha256": "006ce5b14463fd044a02aa9e254f8d1fa95a5f81a41037247ef85f89625be558", "rank": 1},
+    {"order": 12, "source_line": 392, "source_id": "image12_225.jpg", "dimension": "Technical Execution", "word_count": 86, "reference_sha256": "3299050102a66d4c3d1f66bf21722b09fd1388f6e87c4b9f8070bfb87bce2885", "rank": 2},
+    {"order": 13, "source_line": 51957, "source_id": "image13_144.jpg", "dimension": "Theme & Communication", "word_count": 90, "reference_sha256": "01139245cfd8bd58ea45db4f93502699d5f123991124d1f53925c909cb88ed9c", "rank": 1},
+    {"order": 14, "source_line": 35392, "source_id": "image2_199.jpg", "dimension": "Theme & Communication", "word_count": 91, "reference_sha256": "52d6a8521a2e7af246ff00b48e0688410750a8df6773a10f90a77e10cf9bf24a", "rank": 2},
+    {"order": 15, "source_line": 34551, "source_id": "image12_751.jpg", "dimension": "Visual Elements", "word_count": 94, "reference_sha256": "008ca43ef1dd78171ef3a34332325558ed577699bcda9f2cbb178346255aa1a8", "rank": 1},
+    {"order": 16, "source_line": 75942, "source_id": "image6_11.jpg", "dimension": "Visual Elements", "word_count": 92, "reference_sha256": "918d4e8441de060e49e6aed95c3567431c4b4b847f342aaf37dd7547635435f1", "rank": 2}
+  ]
+}

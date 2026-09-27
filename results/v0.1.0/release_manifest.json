@@ -1,0 +1,69 @@
+{
+  "release_version": "v0.1.0",
+  "code_ref": "git-tag:v0.1.0",
+  "artifact_policy": "aggregate_only",
+  "package_versions_for_description_metrics": {
+    "sacrebleu": "2.6.0",
+    "rouge-score": "0.1.2",
+    "nltk": "3.9.4",
+    "bert-score": "0.3.13",
+    "sentence-transformers": "5.3.0",
+    "transformers": "5.7.0",
+    "torch": "2.11.0",
+    "pycocoevalcap": "1.2"
+  },
+  "protocols": {
+    "artimuse_description_0shot": {
+      "protocol_name": "artimuse_description_0shot_v1",
+      "config_sha256": "55f36fe4e68d9a6fc1e2b6ff9cf767c79e29950ad2deef83cd29b71b2bd124ce",
+      "metric_protocol": "artimuse_description_v2",
+      "metric_config_sha256": "769315e7af0daec962b0b1e90ca6744f70399060228c95a1990e53d2b79973a9",
+      "generation_parameters": {"max_new_tokens": 256, "do_sample": false, "temperature": null, "top_p": null, "num_beams": 1, "use_cache": true},
+      "N": 7984,
+      "missing": 0,
+      "duplicate": 0,
+      "invalid": 0,
+      "aggregate_metrics": "description_overall.csv",
+      "subgroup_metrics": "artimuse_description_by_dimension.csv",
+      "prediction_hashes": "description_provenance.csv",
+      "validity_status": "validated",
+      "known_limitations": ["Single reference per sample", "ArtiMuse checkpoint excluded from primary group comparison as in-domain"]
+    },
+    "uniaa_description": {
+      "protocol_name": "uniaa_description_fixed_first_1shot_greedy_v2",
+      "config_sha256": "dadd8c884872bea64356abfec748e7b8b744f5099dd9bbe598b014e2d139c031",
+      "metric_protocol": "uniaa_description_v2",
+      "metric_config_sha256": "6f4baa2b8f3b78cf58c4f84e72b6eee2ec8057c723a4b4a5905ec892c2cdc334",
+      "generation_parameters": {"max_new_tokens": 256, "do_sample": false, "temperature": null, "top_p": null, "num_beams": 1, "use_cache": true},
+      "N": 500,
+      "missing": 0,
+      "duplicate": 0,
+      "invalid": 0,
+      "aggregate_metrics": "description_overall.csv",
+      "prediction_hashes": "description_provenance.csv",
+      "validity_status": "validated_unified_protocol",
+      "known_limitations": ["Unified greedy protocol is not the official paper's stochastic Description inference protocol", "Single reference per sample"]
+    },
+    "uniaa_perception": {
+      "protocol_name": "uniaa_perception_official_v1",
+      "config_sha256": "7706e51fbfd310d3892462095e1b11f43a167a69fb0085dd9b58b5674311e30a",
+      "parser_name": "strict_uniaa_perception_v2",
+      "evaluation_parser_sha256": "a8a3a68549a7a71b8c1d3e83978289aaca0e3893b53dba20573be55d9d06804c",
+      "public_parser_sha256": "6e613a7bed58ab442d51e7f586f164070f63a530566d7869851d4410c2eafac7",
+      "generation_parameters": {"max_new_tokens": 1024, "do_sample": false, "temperature": null, "top_p": null, "num_beams": 1, "use_cache": true},
+      "N_per_model": 5354,
+      "missing": 0,
+      "duplicate": 0,
+      "invalid": "reported_per_model",
+      "aggregate_metrics": "uniaa_qa_overall.csv",
+      "subgroup_metrics": "uniaa_qa_subgroups.csv",
+      "paired_significance": "uniaa_qa_paired_significance.csv",
+      "prediction_hashes": "uniaa_qa_overall.csv",
+      "validity_status": "validated",
+      "known_limitations": ["Invalid response rates differ by model and are reported separately", "Adapters retain each model's native image preprocessing and chat template", "The public parser differs from the evaluated parser only by making per-sample details opt-in; parsing logic is unchanged"]
+    }
+  },
+  "model_checkpoint_revisions": "model_matrix.csv",
+  "dataset_hashes": "data_manifest.json",
+  "few_shot_hashes": "artimuse_16shot_context_manifest.json"
+}
