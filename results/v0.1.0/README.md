@@ -15,8 +15,12 @@ prompt, reference text, image path, answer key, or per-sample detail.
 | `data_manifest.json` | Counts, dataset hashes, and deterministic split metadata |
 | `model_matrix.csv` | Model status and checkpoint revision availability |
 | `release_manifest.json` | Protocol/config/parser/metric provenance |
-| `tables/` | Single-column LaTeX tables |
-| `figures/` | Editable SVG and publication PDF figures |
+| `figures/` | Editable SVG figures embedded by the repository README |
+
+Publication PDFs and single-column LaTeX tables are attached to the GitHub
+`v0.1.0` Release instead of being duplicated in the current checkout. They can
+also be regenerated with `scripts/plot_release_results.py` and
+`scripts/build_release_tables.py`.
 
 All Description columns are raw metrics. No length-penalized metric is used in
 the headline tables. `CLIP-Cos` is normalized embedding cosine, not CLIPScore.
