@@ -1,6 +1,10 @@
-# GLM-4.6V-Flash, Qwen3.5 and the native Transformers adapters.
+# GLM-4.6V-Flash, Qwen3.5, Qwen3-VL, InternVL and native Transformers adapters.
 python==3.10.20
 torch==2.11.0
+torchvision==0.26.0
 transformers==5.5.4
 accelerate==1.13.0
+peft==0.18.1
+timm==1.0.26
+flash-attn==2.7.4.post1
 # Release runs use SDPA; FlashAttention is not silently substituted.
