@@ -1,8 +1,10 @@
 # Results boundary
 
-`results/v0.1.0` contains only aggregate CSV/JSON, LaTeX tables, and plots. It
-does not contain full predictions, references, absolute paths, prompts, or
-per-sample QA details.
+`results/v0.1.0` contains only aggregate CSV/JSON and the editable SVG plots
+embedded in the main README. Publication PDF and LaTeX exports are attached to
+the GitHub `v0.1.0` Release and remain reproducible from the public plotting and
+table-building scripts. Neither location contains full predictions, references,
+absolute paths, prompts, or per-sample QA details.
 
 Description files report 7,984/7,984 ArtiMuse rows and 500/500 UNIAA rows.
 UNIAA QA files report 5,354/5,354 for every model, including invalid-response
