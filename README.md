@@ -1,18 +1,24 @@
 # Aesthetic Evaluation
 
+English · [简体中文](README_zh-CN.md)
+
 [![CI](https://github.com/An-Moon/Aesthetic-evaluation/actions/workflows/ci.yml/badge.svg)](https://github.com/An-Moon/Aesthetic-evaluation/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/An-Moon/Aesthetic-evaluation)](https://github.com/An-Moon/Aesthetic-evaluation/releases/tag/v0.1.0)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue.svg)](pyproject.toml)
 
-Our paper reviews the shift from aesthetic scoring to explainable critique.
-We benchmark 27 models using 14 metrics and examine where automatic scores
-diverge from qualitative judgments.
+An aesthetic score can summarize preference, but it does not explain which
+visual choices support a judgment. Our paper traces the shift from predicting
+scores to writing critiques grounded in the image. We benchmark 27 models with
+14 metrics and use qualitative cases to show what automatic metrics can miss,
+including visual evidence and cultural context.
+
+This repository provides fixed evaluation protocols, model adapters, and
+scripts for reproducible inference and offline evaluation, plus an experimental
+toolbox for aesthetic score prediction.
 
 <p align="center">
   <a href="assets/figures/paper-figure-1.png"><img src="assets/figures/paper-figure-1.png" width="720" alt="Figure 1: From scalar aesthetic scores to evidence-based explanations, with a benchmark overview and examples of metric disagreement"></a>
-  <br>
-  <em>Figure 1. From aesthetic scoring to explainable judgments.</em>
 </p>
 
 [Benchmarks](#benchmarks) · [Results](#benchmark-highlights) ·
@@ -27,18 +33,6 @@ diverge from qualitative judgments.
 
 The [experimental score-evaluation toolbox](aesthetic_eval_score_framework)
 is provided separately. This checkout does not include numerical AVA or TAD66K results.
-
-## Why this repository
-
-- One CLI for inference, resume, offline metrics, and progress evaluation.
-- Native preprocessing and chat templates for each supported checkpoint.
-- Deterministic greedy decoding for the released cross-model protocols.
-- Strict checks for missing images, duplicate IDs, empty predictions, skipped
-  samples, and configuration drift.
-- No fallback to substitute weights, guessed answers, empty strings, or `0.0`
-  scores when a component fails.
-- Private run artifacts retain dataset, checkpoint, config, parser, prediction,
-  and metric provenance without publishing benchmark outputs.
 
 ## Benchmark highlights
 
