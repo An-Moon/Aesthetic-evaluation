@@ -17,13 +17,10 @@ FORBIDDEN_DIRS = {
     "judge_metric_validity_100", "anonymous_eval_submission",
 }
 FORBIDDEN_SUFFIXES = {".pyc", ".log", ".pid", ".state", ".exit", ".docx", ".odt", ".html"}
-ALLOWED_JSONL = {Path("aesthetic_eval_score_framework/tests/fixtures/synthetic_scores.jsonl")}
 CLIP_LEGACY_ALLOWLIST = {
     Path("run.py"), Path("src/aesthetic_eval/metrics.py"), Path("README.md"),
-    Path("docs/METRICS.md"), Path("results/v0.1.0/README.md"),
     Path("scripts/export_description_aggregates.py"),
     Path("scripts/export_random_baseline_summary.py"),
-    Path("tests/test_release_results.py"),
     Path("scripts/check_release_integrity.py"),
 }
 
@@ -75,8 +72,8 @@ def main() -> None:
             errors.append(f"file exceeds 5 MiB: {relative}")
         if path.name == "predictions.jsonl" or path.name == "calc_accuracy.py":
             errors.append(f"forbidden release artifact: {relative}")
-        if path.suffix == ".jsonl" and relative not in ALLOWED_JSONL:
-            errors.append(f"non-synthetic JSONL is not public: {relative}")
+        if path.suffix == ".jsonl":
+            errors.append(f"JSONL artifact is not public: {relative}")
 
         if path.suffix.lower() in {".pdf"}:
             continue

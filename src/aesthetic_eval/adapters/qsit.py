@@ -31,7 +31,7 @@ class QSITAdapter(BaseAdapter):
             raise RuntimeError(
                 "Q-SiT requires a newer transformers build with "
                 "LlavaOnevisionForConditionalGeneration. Use the Q-SiT environment "
-                "documented in docs/MODELS.md."
+                "recorded under configs/environments and the model guidance in README.md."
             ) from e
 
         model_path = str(self.model_cfg["model_path"])

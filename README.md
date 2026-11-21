@@ -5,12 +5,20 @@
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue.svg)](pyproject.toml)
 
-A reproducible, fail-loud framework for evaluating multimodal large language
-models on image-aesthetics tasks. It separates inference from offline scoring,
-uses fixed cross-model protocols, validates complete sample coverage, and keeps
-enough provenance to audit every released aggregate result.
+A reproducible benchmark framework for evaluating how multimodal models
+describe image aesthetics and answer questions about visual composition,
+color, lighting, and other aesthetic attributes.
 
-The current release evaluates:
+[Benchmarks](#benchmarks) · [Results](#benchmark-highlights) ·
+[Quick start](#quick-start) · [Evaluation](#evaluation)
+
+<p align="center">
+  <a href="assets/figures/iaa-overview.png"><img src="assets/figures/iaa-overview.png" width="540" alt="The Starry Night illustrates aesthetic dimensions, reasoning, and subjectivity, and how aesthetic assessment differs from image quality assessment"></a>
+  <br>
+  <em>Image aesthetic assessment goes beyond image fidelity: Van Gogh’s The Starry Night illustrates how composition, contrast, and color shape a viewer’s reading of an image.</em>
+</p>
+
+## Benchmarks
 
 | Task | Benchmark | Public protocol | Evaluation size |
 |---|---|---|---:|
@@ -30,47 +38,48 @@ release does not claim AVA or TAD headline results.
   samples, configuration drift, and ambiguous multiple-choice answers.
 - No fallback to substitute weights, guessed answers, empty strings, or `0.0`
   scores when a component fails.
-- Aggregate-only public results with dataset, checkpoint, config, parser,
-  prediction, and metric hashes.
+- Private run artifacts retain dataset, checkpoint, config, parser, prediction,
+  and metric provenance without publishing benchmark outputs.
 
-## Results at a glance
+## Benchmark highlights
 
-The figures below are generated from the aggregate artifacts in
-[`results/v0.1.0`](results/v0.1.0). Full predictions and benchmark references
-are intentionally not distributed.
+The paper figures below summarize the experiments. Numeric exports, full
+predictions, and benchmark references are not included in this checkout. Click
+any figure to open it at full resolution.
 
 ### UNIAA perception
 
 <p align="center">
-  <img src="results/v0.1.0/figures/uniaa_qa_accuracy.svg" width="780" alt="UNIAA perception accuracy by model">
+  <a href="assets/figures/uniaa-perception.png"><img src="assets/figures/uniaa-perception.png" width="720" alt="UNIAA-Bench multiple-choice accuracy by model under strict evaluation"></a>
 </p>
 
-UniPercept obtains the highest released QA accuracy (82.87%). The result also
-shows that aesthetic specialization alone does not guarantee stronger
-multiple-choice perception performance: several general MLLMs remain
-competitive with specialized checkpoints.
+UniPercept leads the evaluated models at 82.87% on the 5,354-question test.
+Several general-purpose models outperform individual specialist models on
+the same test.
 
 ### Description: lexical versus semantic alignment
 
 <p align="center">
-  <img src="results/v0.1.0/figures/description_lexical_semantic_scatter.svg" width="900" alt="Lexical and semantic description alignment on ArtiMuse and UNIAA">
+  <a href="assets/figures/artimuse-description.png"><img src="assets/figures/artimuse-description.png" width="48%" alt="Lexical and semantic alignment on ArtiMuse-10K under the zero-shot protocol"></a>
+  <a href="assets/figures/uniaa-description.png"><img src="assets/figures/uniaa-description.png" width="48%" alt="Lexical and semantic alignment on UNIAA-Bench under the fixed text-only one-shot protocol"></a>
 </p>
 
-Model rankings change across ArtiMuse and UNIAA. The released metrics therefore
-support a cross-benchmark conclusion, rather than one universal ranking of
-aesthetic description ability.
+Each point represents a model. The horizontal axis averages BLEU, ROUGE-L,
+and METEOR; the vertical axis averages BERT-F1 and SBERT-Cos. The highest-scoring
+model on these axes changes from UniPercept on ArtiMuse (0-shot) to Qwen3.5-9B on
+UNIAA (fixed text-only 1-shot). Because the benchmark and prompting protocol
+both change, this comparison does not isolate the effect of either one.
 
-### Cross-dataset specialization difference
+### ArtiMuse: comparison across eight aesthetic dimensions
 
 <p align="center">
-  <img src="results/v0.1.0/figures/description_cross_dataset_group_delta.svg" width="760" alt="General versus IAA-specific group differences across datasets">
+  <a href="assets/figures/artimuse-dimensions.png"><img src="assets/figures/artimuse-dimensions.png" width="900" alt="Zero-shot group means for general and IAA-specific models across eight ArtiMuse dimensions and seven description metrics"></a>
 </p>
 
-The README presents only the main figures. Small machine-readable CSV/JSON
-files remain in the repository because they are required to verify sample
-counts, hashes, subgroup values, and figure generation. Publication PDFs,
-LaTeX tables, and the same aggregates are also attached to the
-[`v0.1.0` release](https://github.com/An-Moon/Aesthetic-evaluation/releases/tag/v0.1.0).
+Points above the diagonal favor the IAA-specific group; points below it favor
+the general group. On this comparison, BLEU and BERT-F1 favor the specialist
+group in all eight dimensions, while METEOR and SBERT-Cos favor the general
+group. These are descriptive group means, not tests of statistical significance.
 
 ## Model support
 
@@ -82,16 +91,16 @@ LaTeX tables, and the same aggregates are also attached to the
 | ArtQuant | Description retained with a template-output caveat; QA not run |
 | Q-SiT, AesExpert | adapters are public, but Description outputs are `invalid_for_protocol` |
 
-See [`docs/MODELS.md`](docs/MODELS.md) and the machine-readable
-[`model_matrix.csv`](results/v0.1.0/model_matrix.csv) for task-specific status,
-checkpoint revisions, configuration hashes, and limitations.
+Task-specific checkpoint paths and runtime options are defined in
+[`configs/models/examples`](configs/models/examples). Files marked
+`experimental` are not validated members of the main comparison.
 
 ## Quick start
 
 ### 1. Clone and install the framework
 
-Python 3.10 is recommended for model inference. Python 3.10 and 3.11 are both
-used by the CPU test suite.
+Python 3.10 is recommended for model inference. The lightweight CI checks run
+on Python 3.10 and 3.11.
 
 ```bash
 git clone https://github.com/An-Moon/Aesthetic-evaluation.git
@@ -100,14 +109,13 @@ cd Aesthetic-evaluation
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install -e '.[dev]'
+python -m pip install -e .
 
 python run.py --help
-python -m unittest discover -s tests -v
 ```
 
-This installs the framework and CPU validation dependencies. GPU model stacks
-are installed separately because the evaluated checkpoints require mutually
+This installs the portable framework dependencies. GPU model stacks are
+installed separately because the evaluated checkpoints require mutually
 incompatible Transformers versions.
 
 ### 2. Configure local paths
@@ -318,9 +326,7 @@ configs/models/examples/            # portable local-checkpoint configs
 configs/metrics/                    # strict metric protocols
 configs/environments/               # release environment manifests
 scripts/                            # preparation, launch, evaluation, export
-tests/                              # CPU and strict-parser tests
-docs/                               # protocol and comparability details
-results/v0.1.0/                     # aggregate-only public evidence
+assets/figures/                     # final rendered result visualizations
 aesthetic_eval_score_framework/     # experimental scoring toolbox
 ```
 
@@ -338,16 +344,15 @@ aesthetic_eval_score_framework/     # experimental scoring toolbox
 - ArtiMuse is excluded from the primary ArtiMuse group comparison because it is
   trained in-domain.
 
-See [`docs/RESULTS.md`](docs/RESULTS.md),
-[`docs/ARTIMUSE_PROTOCOL.md`](docs/ARTIMUSE_PROTOCOL.md),
-[`docs/UNIAA_DESCRIPTION_PROTOCOL.md`](docs/UNIAA_DESCRIPTION_PROTOCOL.md), and
-[`docs/UNIAA_PERCEPTION_PROTOCOL.md`](docs/UNIAA_PERCEPTION_PROTOCOL.md).
+The YAML files under [`configs/protocols`](configs/protocols) are the canonical
+machine-readable protocol definitions. Local `run_meta.json` files record the
+fully resolved configuration used by each run.
 
 ## License and citation
 
 Original repository code is licensed under Apache-2.0. External checkpoints,
 datasets, and optional upstream repositories retain their own terms; see
-[`NOTICE`](NOTICE) and [`docs/DATA.md`](docs/DATA.md).
+[`NOTICE`](NOTICE) and the official dataset links in the quick start.
 
 Formal paper metadata is still pending, so the repository intentionally does
 not include `CITATION.cff`. Use the GitHub repository and release URL until the

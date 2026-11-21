@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Keeps only final SVG visualizations in the repository; numeric result exports
+  and per-sample artifacts remain private.
+- Consolidates public usage and protocol guidance in the root README.
+- Removes the public test suite while retaining CI smoke, compilation, config,
+  and release-boundary checks.
+
 ## v0.1.0 - 2026-09-27
 
 - Publishes portable, fail-loud description and UNIAA perception evaluation.
