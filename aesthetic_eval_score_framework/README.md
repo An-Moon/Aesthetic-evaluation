@@ -30,4 +30,24 @@ is applied.
 | Qwen/InternVL/LLaVA numeric prompt | generic experimental baseline |
 
 Model checkpoints, upstream repositories, AVA/TAD annotations and predictions
-are not distributed. See `docs/EXTERNAL_DEPENDENCIES.md` and the root `NOTICE`.
+are not distributed. Upstream components remain subject to their own licenses;
+see the root `NOTICE`.
+
+## External adapter dependencies
+
+The toolbox does not vendor upstream model repositories or checkpoints. Point
+the corresponding environment variable at an official local checkout when an
+adapter requires one:
+
+| Adapter | Environment variable | External repository use |
+| --- | --- | --- |
+| ArtiMuse | `ARTIMUSE_REPO` | Official `InternVLChatModel.score()` implementation |
+| ArtQuant | `ARTQUANT_REPO` | Official mPLUG-Owl2 + LoRA loader and logits scorer |
+| AesExpert | `LLAVA_REPO` | LLaVA v1.5 loader; toolbox scoring remains a fallback |
+| UniPercept | `UNIPERCEPT_REPO` | Official repository scoring implementation |
+| OneAlign / Q-Align | `QALIGN_REPO` | Official `QAlignAestheticScorer` |
+| Q-SiT | none | Local Hugging Face-style OneVision checkpoint |
+| Qwen3-VL, InternVL3.5, LLaVA-OneVision | none | Local generic prompt-numeric baselines |
+
+All required paths use `${VAR}` expansion and fail immediately when missing.
+See the root `.env.example` for the complete variable list.
