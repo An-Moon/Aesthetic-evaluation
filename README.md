@@ -5,18 +5,18 @@
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue.svg)](pyproject.toml)
 
-A reproducible benchmark framework for evaluating how multimodal models
-describe image aesthetics and answer questions about visual composition,
-color, lighting, and other aesthetic attributes.
+Our paper reviews the shift from aesthetic scoring to explainable critique.
+We benchmark 27 models using 14 metrics and examine where automatic scores
+diverge from qualitative judgments.
+
+<p align="center">
+  <a href="assets/figures/paper-figure-1.png"><img src="assets/figures/paper-figure-1.png" width="720" alt="Figure 1: From scalar aesthetic scores to evidence-based explanations, with a benchmark overview and examples of metric disagreement"></a>
+  <br>
+  <em>Figure 1. From aesthetic scoring to explainable judgments.</em>
+</p>
 
 [Benchmarks](#benchmarks) · [Results](#benchmark-highlights) ·
 [Quick start](#quick-start) · [Evaluation](#evaluation)
-
-<p align="center">
-  <a href="assets/figures/iaa-overview.png"><img src="assets/figures/iaa-overview.png" width="540" alt="The Starry Night illustrates aesthetic dimensions, reasoning, and subjectivity, and how aesthetic assessment differs from image quality assessment"></a>
-  <br>
-  <em>Image aesthetic assessment goes beyond image fidelity: Van Gogh’s The Starry Night illustrates how composition, contrast, and color shape a viewer’s reading of an image.</em>
-</p>
 
 ## Benchmarks
 
@@ -24,10 +24,9 @@ color, lighting, and other aesthetic attributes.
 |---|---|---|---:|
 | Dimension-conditioned description | ArtiMuse-10K | 0-shot and 16-shot text-only | 7,984 |
 | Aesthetic description | UNIAA-Bench | fixed-first 1-shot text-only | 500 |
-| Multiple-choice aesthetic perception | UNIAA-Bench | official-v1 prompt + strict-v2 parser | 5,354 |
 
-An independent score-evaluation toolbox is included as **experimental**. The
-release does not claim AVA or TAD headline results.
+The [experimental score-evaluation toolbox](aesthetic_eval_score_framework)
+is provided separately. This checkout does not include numerical AVA or TAD66K results.
 
 ## Why this repository
 
@@ -35,7 +34,7 @@ release does not claim AVA or TAD headline results.
 - Native preprocessing and chat templates for each supported checkpoint.
 - Deterministic greedy decoding for the released cross-model protocols.
 - Strict checks for missing images, duplicate IDs, empty predictions, skipped
-  samples, configuration drift, and ambiguous multiple-choice answers.
+  samples, and configuration drift.
 - No fallback to substitute weights, guessed answers, empty strings, or `0.0`
   scores when a component fails.
 - Private run artifacts retain dataset, checkpoint, config, parser, prediction,
@@ -46,16 +45,6 @@ release does not claim AVA or TAD headline results.
 The paper figures below summarize the experiments. Numeric exports, full
 predictions, and benchmark references are not included in this checkout. Click
 any figure to open it at full resolution.
-
-### UNIAA perception
-
-<p align="center">
-  <a href="assets/figures/uniaa-perception.png"><img src="assets/figures/uniaa-perception.png" width="720" alt="UNIAA-Bench multiple-choice accuracy by model under strict evaluation"></a>
-</p>
-
-UniPercept leads the evaluated models at 82.87% on the 5,354-question test.
-Several general-purpose models outperform individual specialist models on
-the same test.
 
 ### Description: lexical versus semantic alignment
 
@@ -87,8 +76,8 @@ group. These are descriptive group means, not tests of statistical significance.
 |---|---|
 | InternVL3.5-8B, GLM-4.6V-Flash, Qwen3.5-9B, Qwen3-VL-8B, LLaVA-OneVision-8B | validated |
 | UNIAA, UniPercept, Aes-R1 | validated |
-| ArtiMuse | QA validated; ArtiMuse Description is `in_domain_only` |
-| ArtQuant | Description retained with a template-output caveat; QA not run |
+| ArtiMuse | ArtiMuse Description is `in_domain_only` |
+| ArtQuant | Description retained with a template-output caveat |
 | Q-SiT, AesExpert | adapters are public, but Description outputs are `invalid_for_protocol` |
 
 Task-specific checkpoint paths and runtime options are defined in
@@ -158,11 +147,9 @@ Expected dataset layout:
 $AESTHETIC_DATA_ROOT/
 ├── Artimuse/
 │   ├── images/
-│   ├── score/test.json
 │   └── text/{train.jsonl,test.jsonl}
 └── UNIAA/A_UNIAA_Bench/
-    ├── description/
-    └── perception/
+    └── description/
 ```
 
 Model directories must match the `model_path` in the selected YAML under
@@ -195,17 +182,13 @@ Use the recorded `llava37`, `llava_onevision`, or `aes_r1` environment for
 those model families. Do not upgrade one shared environment until all target
 adapters import successfully; separate environments are the reproducible path.
 
-### 5. Prepare deterministic UNIAA splits
+### 5. Prepare description protocols
 
 ```bash
 python scripts/prepare_uniaa_description_1shot_v1.py \
   --source-root "$AESTHETIC_DATA_ROOT/UNIAA/A_UNIAA_Bench/description" \
   --output-dir "$AESTHETIC_DATA_ROOT/prepared/uniaa_description_1shot" \
   --context-output "$UNIAA_1SHOT_CONTEXT_FILE"
-
-python scripts/prepare_uniaa_perception_official_v1.py \
-  --source-root "$AESTHETIC_DATA_ROOT/UNIAA/A_UNIAA_Bench/perception" \
-  --output-dir "$AESTHETIC_DATA_ROOT/prepared/uniaa_perception"
 ```
 
 For ArtiMuse 16-shot, rebuild the leakage-controlled examples locally:
@@ -223,11 +206,12 @@ protocol artifact when its bytes have drifted.
 
 ### 6. Run a smoke test
 
-The following command runs the first four prepared UNIAA QA rows with Qwen3-VL:
+The following command runs the first four prepared UNIAA description samples
+with Qwen3-VL:
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python run.py infer \
-  --base-config configs/protocols/uniaa_perception_official_v1.yaml \
+  --base-config configs/protocols/uniaa_description_1shot_greedy_v2.yaml \
   --model-config configs/models/examples/qwen3_vl_8b.yaml \
   --sample-limit 4 \
   --output-root "$AESTHETIC_OUTPUT_ROOT/smoke"
@@ -239,10 +223,6 @@ written to `predictions.jsonl` before starting a full run.
 ### 7. Run a released protocol
 
 ```bash
-# UNIAA perception, 5,354 questions
-CUDA_VISIBLE_DEVICES=0 bash scripts/run_uniaa_perception.sh \
-  configs/models/examples/qwen3_vl_8b.yaml
-
 # UNIAA Description, fixed-first 1-shot, 500 images
 CUDA_VISIBLE_DEVICES=0 bash scripts/run_uniaa_description.sh \
   configs/models/examples/qwen3_vl_8b.yaml
@@ -257,19 +237,6 @@ Resume validates existing IDs and rejects duplicates or rows from another
 dataset.
 
 ## Evaluation
-
-### UNIAA perception
-
-```bash
-python scripts/eval_uniaa_perception_strict.py \
-  --pred-file "$AESTHETIC_OUTPUT_ROOT/<run>/predictions.jsonl" \
-  --dataset-file "$AESTHETIC_DATA_ROOT/prepared/uniaa_perception/test_5354.jsonl" \
-  --output-file "$AESTHETIC_OUTPUT_ROOT/<run>/accuracy_strict_v2.json"
-```
-
-The parser accepts only an unambiguous option label or uniquely normalized
-option text. Invalid answers remain invalid and count against the full 5,354-row
-denominator.
 
 ### Description metrics
 
@@ -292,6 +259,9 @@ python run.py eval \
   --metrics-config configs/metrics/artimuse_description_v2.yaml \
   --by-dimension
 ```
+
+For UNIAA, use `configs/metrics/uniaa_description_v2.yaml` and omit
+`--by-dimension`.
 
 The released metrics are BLEU, ROUGE-L, METEOR, BERT-F1, SBERT-Cos, SPICE, and
 CLIP-Cos. `CLIP-Cos` is normalized CLIP image-text cosine, not the scaled metric
@@ -335,7 +305,6 @@ aesthetic_eval_score_framework/     # experimental scoring toolbox
 - ArtiMuse results require 7,984/7,984 rows.
 - UNIAA Description requires 500/500 rows after removing the fixed first
   text-only example.
-- UNIAA perception requires 5,354/5,354 rows.
 - Decoding is greedy with `do_sample: false` and `num_beams: 1`.
 - The released Description protocol is a unified cross-model comparison, not a
   direct reproduction of the UNIAA paper's stochastic Description setting.
